@@ -5,12 +5,24 @@ export const addTodo = async(req, res) => {
         if(!todo){
             return res.status(404).json({message:'Please enter a todo to proceed'});
         }
-        const newTodo = new Todo({
-            todo
-        });
+        const newTodo = new Todo({todo});
 
         await newTodo.save();
-        return res.status({message:'New todo added', newTodo});
+        return res.status(201).json({message:'New todo added', newTodo});
+
+    } catch (error) {
+        return res.status(500).json({message:error.message});
+    }
+}
+
+export const getAllTodo = async(req, res) => {
+    try {
+        const todos = await Todo.find();
+        if(todos.length === 0){
+            return res.status(404).json({message:'You have no todo yet'});
+        }
+
+        return res.status(200).json(todos);
         
     } catch (error) {
         return res.status(500).json({message:error.message});
