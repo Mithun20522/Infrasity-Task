@@ -5,6 +5,10 @@ export const addTodo = async(req, res) => {
         if(!todo){
             return res.status(404).json({message:'Please enter a todo to proceed'});
         }
+        const exist = await Todo.findOne({todo});
+        if(exist){
+            return res.status(409).json({message:'To do already exist'});
+        }
         const newTodo = new Todo({todo});
 
         await newTodo.save();
