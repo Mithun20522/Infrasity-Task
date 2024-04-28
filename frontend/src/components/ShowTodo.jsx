@@ -8,7 +8,7 @@ const ShowTodo = ({todo, onEdit}) => {
 
   const handleDelete = async() => {
     try {
-      const res = await fetch(`http://localhost:8080/api/todo/delete-todo/${todo._id}`,{method:'DELETE'});
+      const res = await fetch(`https://infrasity-task.onrender.com/api/todo/delete-todo/${todo._id}`,{method:'DELETE'});
       const data = await res.json();
       if(res.ok){
         toast.success(data.message);

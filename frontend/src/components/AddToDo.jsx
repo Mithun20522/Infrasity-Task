@@ -23,7 +23,7 @@ const AddToDo = ({editTodo,onAddOrUpdate}) => {
     try {
       let res;
       if (editTodo) {
-        res = await fetch(`http://localhost:8080/api/todo/update-todo/${editTodo._id}`, {
+        res = await fetch(`https://infrasity-task.onrender.com/api/todo/update-todo/${editTodo._id}`, {
           method: 'PATCH',
           headers: {
             'Content-Type': 'application/json'
@@ -31,7 +31,7 @@ const AddToDo = ({editTodo,onAddOrUpdate}) => {
           body: JSON.stringify(addedTodo)
         });
       } else {
-        res = await fetch('http://localhost:8080/api/todo/add-todo', {
+        res = await fetch('https://infrasity-task.onrender.com/api/todo/add-todo', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

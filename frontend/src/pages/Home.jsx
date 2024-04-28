@@ -13,7 +13,7 @@ const Home = () => {
 
   const getTodos = async () => {
     try {
-      const res = await fetch('http://localhost:8080/api/todo/get-todos', { method: 'GET' });
+      const res = await fetch('https://infrasity-task.onrender.com/api/todo/get-todos', { method: 'GET' });
       const data = await res.json();
       setTodos(data);
     } catch (error) {
